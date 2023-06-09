@@ -2,11 +2,15 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>CodePen - Virtual Credit Card Design</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  
+  <title>Credit Card Validation</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-Af6RyVavFKS0reOIKgwOfcv5J/jOTMQ8pSyzmvS2h59c5mChx5y9ZvAz8ZxLzKTTEVCwF/YKXyOl1WSZI5Pjzg==" crossorigin="anonymous" />
   <link rel="stylesheet" href="./style.css">
 
 </head>
 <body>
+
 <!-- partial:index.partial.html -->
 <div class="containerC">
         <div class="card">
@@ -104,87 +108,14 @@
                 </div>
                 <input type="submit" value="submit" class="submit-btn">
             </form>
-        
+            <div id="popup"></div>
+            <div class="loader-wrapper">
+                <span class="loader"><span class="loader-inner"></span></span>
+              </div>
               
         </di>
     </div>
 <!-- partial -->
-  <script>
-
-
-document.querySelector('.card-number-input').oninput = () =>{
-    const textinput = document.querySelector('.card-number-input').value;
-    const result = textinput.match(/.{1,4}/g).join(" ");
-    
-    document.querySelector('.card-no').textContent  = result
-}
-
-
-document.querySelector('.card-holder-input').oninput = () =>{
-   // window.alert(document.getElementById('card-holder-name').innerText);
-    document.querySelector('.card-holder-name').textContent = document.querySelector('.card-holder-input').value;
-}
-
-document.querySelector('.month-input').oninput = () =>{
-    document.querySelector('.exp-month').textContent = document.querySelector('.month-input').value;
-}
-
-document.querySelector('.year-input').oninput = () =>{
-    document.querySelector('.exp-year').textContent = document.querySelector('.year-input').value;
-}
-
-document.querySelector('.cvv-input').oninput = () =>{
-    document.querySelector('.cvv-box').textContent  = document.querySelector('.cvv-input').value;
-}
-
-
-const form = document.getElementById('form');
-form.addEventListener('submit',function(e){
-    e.preventDefault();
-
-
-      // Get the form inputs
-    var cardNumber = document.querySelector('.card-number-input').value;
-    //var cardHolder = document.querySelector('.card-holder-input').value;
-    var expirationMonth = document.querySelector('.month-input').value;
-    var expirationYear = document.querySelector('.year-input').value-2000;
-    var cvv = document.querySelector('.cvv-input').value;
-
-    const expirationDate = expirationMonth + "/" + expirationYear 
-
-    // Construct the request body
-    var requestBody = {
-    card_number: cardNumber,
-    expiration_date: expirationDate,
-    cvv: cvv
-  };
-
-
-  // Send the PUT request
-  fetch('http://127.0.0.1:8000/validate_credit_card', {
-    method: 'PUT',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(requestBody)
-  })
-  .then(function(response) {
-    // Handle the response from the API
-    if (response.ok) {
-      console.log (response.json()); // Parse the response body as JSON
-    } else {
-      throw new Error('Error: ' + response.status);
-    }
-  })
-  .catch(function(error) {
-    // Handle any errors that occurred during the request
-    alert('An error occurred: ' + error.message);
-  });
-
-    //new object FormData Array[Array[2]]
-    const payload = new FormData(form)
-    console.log([...payload]);
-})
-  </script>
+   <script src="./script.js"></script>
 </body>
 </html>

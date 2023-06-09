@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from credit_card import CreditCardRequest,CreditCardResponse
-#from fastapi.middleware.cors import CORSMiddleware
+from fastapi.middleware.cors import CORSMiddleware
 
 from datetime import datetime
 """
@@ -36,15 +36,16 @@ origins = [
     "http://127.0.0.1",
     "http://127.0.0.1:8000",
 ]
+"""
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["GET", "POST", "PUT", "DELETE"],
     allow_headers=["*"],
 )
-"""
+
 #Define Endpoint /validate_credit_card
 @app.post('/validate_credit_card', response_model=CreditCardResponse)
 def validateCreditCardRequest(credit_card: CreditCardRequest):

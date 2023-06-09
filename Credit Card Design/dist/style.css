@@ -10,7 +10,7 @@
 .containerC {
     min-height: 100vh;
     width: 100%;
-    background: #000;
+    background: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -130,7 +130,7 @@
 }
 .container{
     min-height: 100vh;
-    background: #000;
+    background: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -141,7 +141,7 @@
 .container form{
     background: #fff;
     border-radius: 5px;
-    box-shadow: 0 10px 15px rgb(233, 226, 226);
+    box-shadow: 0 10px 15px rgb(17, 15, 15);
     padding: 20px;
     width: 600px;
     padding-top: 50px;
@@ -191,3 +191,75 @@
     letter-spacing: 2px;
     opacity: .8;
 }
+
+
+/*LOADER SCREEN*/
+
+.loader-wrapper {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #ff2c7d;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .loader {
+    display: none;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    border: 4px solid #Fff;
+    animation: loader 2s infinite ease;
+  }
+
+  .loader-inner {
+    vertical-align: top;
+    display: inline-block;
+    width: 100%;
+    background-color: #fff;
+    animation: loader-inner 2s infinite ease-in;
+  }
+  
+  @keyframes loader {
+    0% { transform: rotate(0deg);}
+    25% { transform: rotate(180deg);}
+    50% { transform: rotate(180deg);}
+    75% { transform: rotate(360deg);}
+    100% { transform: rotate(360deg);}
+  }
+  
+  @keyframes loader-inner {
+    0% { height: 0%;}
+    25% { height: 0%;}
+    50% { height: 100%;}
+    75% { height: 100%;}
+    100% { height: 0%;}
+  }
+
+/*Popup Styles*/
+.success-popup {
+    background-color: #7ed321;
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+  }
+
+  .failure-popup {
+    background-color: #ff3b30;
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+  }
+
+  .success-popup i,
+  .failure-popup i {
+    margin-right: 5px;
+  }
