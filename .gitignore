@@ -1,0 +1,8 @@
+#ignore  specific files
+.env
+#ignoring specific directories
+.log
+#ignore file path
+
+/Python Backend Proyect/__pycache__
+/Python Backend Proyect/venv
